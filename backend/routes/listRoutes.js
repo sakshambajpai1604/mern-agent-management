@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const ListItem = require("../models/ListItem");
+const ListItem = require("../models/DistributedList");
 
 router.get("/lists/:agentId", async (req, res) => {
   const { agentId } = req.params;
