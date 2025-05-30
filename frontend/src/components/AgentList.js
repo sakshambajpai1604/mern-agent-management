@@ -1,42 +1,27 @@
-import { useEffect, useState } from "react";
-import api from "../services/api";
+import { useEffect, useState } from 'react';
+import API from '../api/axios';
 
-export default function AgentLists() {
+const AgentList = () => {
   const [agents, setAgents] = useState([]);
-  const [lists, setLists] = useState({});
 
   useEffect(() => {
-    async function fetchData() {
-      const resAgents = await api.get("/agents");
-      setAgents(resAgents.data);
-
-      // For each agent, fetch their list items
-      const listsData = {};
-      await Promise.all(
-        resAgents.data.map(async (agent) => {
-          const res = await api.get(`/lists/${agent._id}`);
-          listsData[agent._id] = res.data;
-        })
-      );
-      setLists(listsData);
-    }
-    fetchData();
+    const fetchAgents = async () => {
+      const { data } = await API.get('/agents');
+      setAgents(data);
+    };
+    fetchAgents();
   }, []);
 
   return (
     <div>
-      {agents.map((agent) => (
-        <div key={agent._id}>
-          <h3>{agent.name}</h3>
-          <ul>
-            {(lists[agent._id] || []).map((item) => (
-              <li key={item._id}>
-                {item.firstName} - {item.phone} - {item.notes}
-              </li>
-            ))}
-          </ul>
-        </div>
-      ))}
+      <h3>Agents</h3>
+      <ul>
+        {agents.map((a) => (
+          <li key={a._id}>{a.name} - {a.email}</li>
+        ))}
+      </ul>
     </div>
   );
-}
+};
+
+export default AgentList;

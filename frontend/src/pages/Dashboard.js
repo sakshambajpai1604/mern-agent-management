@@ -1,26 +1,12 @@
-import { useEffect, useState } from "react";
-import api from "../services/api";
-import AddAgentForm from "../components/AddAgentForm";
-import UploadList from "../components/UploadList";
-import AgentLists from "../components/AgentLists";
+import FileUpload from '../components/FileUpload';
+import AgentList from '../components/AgentList';
 
-export default function Dashboard() {
-  const [agents, setAgents] = useState([]);
+const Dashboard = () => (
+  <div>
+    <h2>Admin Dashboard</h2>
+    <FileUpload />
+    <AgentList />
+  </div>
+);
 
-  const fetchAgents = () => {
-    api.get("/agents").then(res => setAgents(res.data));
-  };
-
-  useEffect(() => {
-    fetchAgents();
-  }, []);
-
-  return (
-    <div>
-      <h2>Agents</h2>
-      <AddAgentForm onAgentAdded={fetchAgents} />
-      <UploadList />
-      <AgentLists />
-    </div>
-  );
-}
+export default Dashboard;
