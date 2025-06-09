@@ -14,7 +14,7 @@ const agentRoutes = require("./routes/agentRoutes");
 const uploadRoutes = require("./routes/uploadRoutes");
 const listRoutes = require("./routes/listRoutes");
 
-app.use("/api", authRoutes);
+app.use("/api/auth", authRoutes);
 app.use("/api", agentRoutes);
 app.use("/api", uploadRoutes);
 app.use("/api", listRoutes);

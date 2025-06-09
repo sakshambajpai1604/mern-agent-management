@@ -1,0 +1,117 @@
+.register-page-container {
+  max-width: 440px;
+  margin: 4rem auto;
+  padding: 2.7rem 2.2rem;
+  background: linear-gradient(135deg, #f8f9fa 70%, #e3e6f3 100%, #e0e7ff 100%);
+  border-radius: 26px;
+  box-shadow: 0 10px 40px rgba(123, 97, 255, 0.15), 0 2px 8px rgba(80, 72, 229, 0.08);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: box-shadow 0.2s, background 0.3s;
+  border: 2px solid #e3e6f3;
+  position: relative;
+  overflow: hidden;
+}
+
+.register-page-container::before {
+  content: "";
+  position: absolute;
+  top: -60px;
+  right: -60px;
+  width: 170px;
+  height: 170px;
+  background: radial-gradient(circle, #7b61ff55 60%, transparent 100%);
+  z-index: 0;
+}
+
+.register-page-container::after {
+  content: "";
+  position: absolute;
+  bottom: -60px;
+  left: -60px;
+  width: 150px;
+  height: 150px;
+  background: radial-gradient(circle, #5a8dee44 60%, transparent 100%);
+  z-index: 0;
+}
+
+.register-page-container > * {
+  position: relative;
+  z-index: 1;
+}
+
+.register-page-container:hover {
+  box-shadow: 0 18px 56px rgba(123, 97, 255, 0.19), 0 6px 20px rgba(80, 72, 229, 0.13);
+  background: linear-gradient(135deg, #f8f9fa 60%, #e3e6f3 100%, #e0e7ff 100%);
+}
+
+.register-title {
+  margin-bottom: 2rem;
+  color: #4b2996;
+  letter-spacing: 2px;
+  font-size: 2.3rem;
+  font-weight: 800;
+  text-shadow: 0 2px 12px rgba(123, 97, 255, 0.08);
+  background: linear-gradient(90deg, #7b61ff 30%, #5a8dee 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.register-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.register-form input {
+  padding: 1rem 1.2rem;
+  border: 1.5px solid #e3e6f3;
+  border-radius: 12px;
+  font-size: 1.08rem;
+  background: #f8f9fa;
+  transition: border 0.2s, box-shadow 0.2s;
+  box-shadow: 0 1px 6px rgba(123, 97, 255, 0.04);
+}
+
+.register-form input:focus {
+  border: 1.5px solid #7b61ff;
+  outline: none;
+  box-shadow: 0 2px 10px rgba(123, 97, 255, 0.10);
+}
+
+.register-form button {
+  padding: 1rem 1.2rem;
+  background: linear-gradient(90deg, #7b61ff 60%, #5a8dee 100%);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  font-size: 1.18rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s, box-shadow 0.2s, transform 0.1s;
+  box-shadow: 0 2px 10px rgba(123, 97, 255, 0.13);
+  letter-spacing: 1px;
+  margin-top: 0.5rem;
+}
+
+.register-form button:hover {
+  background: linear-gradient(90deg, #5a8dee 60%, #7b61ff 100%);
+  box-shadow: 0 6px 20px rgba(123, 97, 255, 0.18);
+  transform: translateY(-2px) scale(1.03);
+}
+
+.register-error {
+  color: #e53e3e;
+  background: #fff0f0;
+  border: 1px solid #ffd6d6;
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 500;
+  box-shadow: 0 1px 4px #ffd6d6;
+}
