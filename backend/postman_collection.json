@@ -63,6 +63,27 @@
       }
     },
     {
+      "name": "Create Agent (Protected)",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{token}}" },
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Agent Name\",\n  \"email\": \"agent@example.com\",\n  \"password\": \"agentpass\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/agents",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "agents"]
+        }
+      }
+    },
+    {
       "name": "Upload File (Protected)",
       "request": {
         "method": "POST",
@@ -76,11 +97,11 @@
           ]
         },
         "url": {
-          "raw": "http://localhost:5000/api/upload",
+          "raw": "http://localhost:5000/api/upload/upload",
           "protocol": "http",
           "host": ["localhost"],
           "port": "5000",
-          "path": ["api", "upload"]
+          "path": ["api", "upload", "upload"]
         }
       }
     }

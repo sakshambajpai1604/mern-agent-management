@@ -3,7 +3,7 @@ const { createAgent, getAgents } = require('../controllers/agentController');
 const { protect } = require('../middleware/authMiddleware');
 const router = express.Router();
 
-router.post('/add', protect, createAgent);
-router.get('/', protect, getAgents);
+router.post('/agents', protect, createAgent);
+router.get('/agents', protect, getAgents);
 
 module.exports = router;
