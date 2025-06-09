@@ -9,7 +9,7 @@ app.use(cors());
 app.use(express.json());
 
 // Import routes
-const authRoutes = require("./routes/authRoutes");
+const authRoutes = require("./routes/auth");
 const agentRoutes = require("./routes/agentRoutes");
 const uploadRoutes = require("./routes/uploadRoutes");
 const listRoutes = require("./routes/listRoutes");
