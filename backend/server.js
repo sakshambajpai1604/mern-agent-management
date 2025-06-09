@@ -15,9 +15,9 @@ const uploadRoutes = require("./routes/uploadRoutes");
 const listRoutes = require("./routes/listRoutes");
 
 app.use("/api/auth", authRoutes);
-app.use("/api", agentRoutes);
-app.use("/api", uploadRoutes);
-app.use("/api", listRoutes);
+app.use("/api/agents", agentRoutes);
+app.use("/api/uploads", uploadRoutes);
+app.use("/api/lists", listRoutes);
 
 // MongoDB connection
 mongoose.connect(process.env.MONGO_URI)

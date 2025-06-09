@@ -84,6 +84,59 @@
       }
     },
     {
+      "name": "Get Agent By ID (Protected)",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{token}}" }
+        ],
+        "url": {
+          "raw": "http://localhost:5000/api/agents/:id",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "agents", ":id"]
+        }
+      }
+    },
+    {
+      "name": "Update Agent (Protected)",
+      "request": {
+        "method": "PUT",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{token}}" },
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Updated Name\",\n  \"email\": \"updated@example.com\",\n  \"password\": \"newpass\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/agents/:id",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "agents", ":id"]
+        }
+      }
+    },
+    {
+      "name": "Delete Agent (Protected)",
+      "request": {
+        "method": "DELETE",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{token}}" }
+        ],
+        "url": {
+          "raw": "http://localhost:5000/api/agents/:id",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "agents", ":id"]
+        }
+      }
+    },
+    {
       "name": "Upload File (Protected)",
       "request": {
         "method": "POST",
