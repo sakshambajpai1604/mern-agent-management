@@ -75,3 +75,49 @@
   font-size: 0.98rem;
   margin-top: 2px;
 }
+
+.agent-add-form,
+.agent-edit-form {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+.agent-add-form input,
+.agent-edit-form input {
+  padding: 0.5rem;
+  border-radius: 6px;
+  border: 1px solid #e3e6f3;
+}
+.agent-add-form button,
+.agent-edit-form button,
+.agent-actions button {
+  background: linear-gradient(90deg, #7b61ff 60%, #5a8dee 100%);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 0.5rem 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin-right: 0.3rem;
+}
+.agent-add-form button:hover,
+.agent-edit-form button:hover,
+.agent-actions button:hover {
+  background: linear-gradient(90deg, #5a8dee 60%, #7b61ff 100%);
+}
+.agent-list-msg {
+  margin: 0.5rem 0 1rem 0;
+  color: #2e7d32;
+  background: #e6f9ed;
+  border: 1px solid #b2f2d7;
+  border-radius: 6px;
+  padding: 0.5rem 1rem;
+}
+.agent-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  margin-left: 1rem;
+}
