@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import API from '../api/axios';
 import './RegistrationForm.css';
 
@@ -6,6 +7,7 @@ const RegistrationForm = ({ onRegister }) => {
   const [form, setForm] = useState({ name: '', email: '', password: '' });
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const handleChange = e => setForm({ ...form, [e.target.name]: e.target.value });
 
@@ -23,38 +25,48 @@ const RegistrationForm = ({ onRegister }) => {
   };
 
   return (
-    <form className="register-form" onSubmit={handleSubmit}>
-      <input
-        className="register-input"
-        name="name"
-        placeholder="Name"
-        value={form.name}
-        onChange={handleChange}
-        required
-      />
-      <input
-        className="register-input"
-        name="email"
-        placeholder="Email"
-        type="email"
-        value={form.email}
-        onChange={handleChange}
-        required
-      />
-      <input
-        className="register-input"
-        name="password"
-        type="password"
-        placeholder="Password"
-        value={form.password}
-        onChange={handleChange}
-        required
-      />
-      <button className="register-btn" type="submit" disabled={loading}>
-        {loading ? 'Registering...' : 'Register'}
+    <>
+      <form className="register-form" onSubmit={handleSubmit}>
+        <input
+          className="register-input"
+          name="name"
+          placeholder="Name"
+          value={form.name}
+          onChange={handleChange}
+          required
+        />
+        <input
+          className="register-input"
+          name="email"
+          placeholder="Email"
+          type="email"
+          value={form.email}
+          onChange={handleChange}
+          required
+        />
+        <input
+          className="register-input"
+          name="password"
+          type="password"
+          placeholder="Password"
+          value={form.password}
+          onChange={handleChange}
+          required
+        />
+        <button className="register-btn" type="submit" disabled={loading}>
+          {loading ? 'Registering...' : 'Register'}
+        </button>
+        {error && <div className="register-error">{error}</div>}
+      </form>
+      <button
+        className="login-link-btn"
+        type="button"
+        onClick={() => navigate('/login')}
+        style={{ marginTop: '1rem' }}
+      >
+        Login
       </button>
-      {error && <div className="register-error">{error}</div>}
-    </form>
+    </>
   );
 };
 
