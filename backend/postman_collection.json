@@ -72,7 +72,7 @@
         ],
         "body": {
           "mode": "raw",
-          "raw": "{\n  \"name\": \"Agent Name\",\n  \"email\": \"agent@example.com\",\n  \"password\": \"agentpass\"\n}"
+          "raw": "{\n  \"name\": \"Agent Name\",\n  \"email\": \"agent@example.com\",\n  \"password\": \"agentpass\",\n  \"mobile\": \"1234567890\"\n}"
         },
         "url": {
           "raw": "http://localhost:5000/api/agents",
@@ -109,7 +109,7 @@
         ],
         "body": {
           "mode": "raw",
-          "raw": "{\n  \"name\": \"Updated Name\",\n  \"email\": \"updated@example.com\",\n  \"password\": \"newpass\"\n}"
+          "raw": "{\n  \"name\": \"Updated Name\",\n  \"email\": \"updated@example.com\",\n  \"password\": \"newpass\",\n  \"mobile\": \"9876543210\"\n}"
         },
         "url": {
           "raw": "http://localhost:5000/api/agents/:id",
