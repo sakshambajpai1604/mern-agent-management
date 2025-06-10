@@ -5,7 +5,7 @@
 This is a full-stack MERN application that allows an admin to:
 
 - Log in securely using JWT authentication
-- Add and manage agents
+- Add, edit, and delete agents
 - Upload CSV or Excel files containing lead/task data
 - Automatically distribute entries equally among 5 agents
 - View assigned entries for each agent via the frontend
@@ -14,8 +14,8 @@ This is a full-stack MERN application that allows an admin to:
 
 ## ⚙️ Tech Stack
 
-- **Frontend:** React.js
-- **Backend:** Node.js + Express.js
+- **Frontend:** React.js (deployed on Vercel)
+- **Backend:** Node.js + Express.js (deploy separately, e.g., Render/Railway)
 - **Database:** MongoDB
 - **Authentication:** JWT
 - **File Handling:** multer, csv-parser, xlsx
@@ -37,6 +37,7 @@ root/
 ├── frontend/
 │   ├── public/
 │   ├── src/
+│   │   ├── api/
 │   │   ├── components/
 │   │   └── pages/
 ├── README.md
@@ -49,7 +50,7 @@ root/
 ### 1️⃣ Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/mern-admin-agent-distributor.git
+git clone https://github.com/sakshambajpai1604/mern-admin-agent-management.git
 cd mern-admin-agent-distributor
 ```
 
@@ -88,9 +89,20 @@ cd ../frontend
 npm install
 ```
 
-Ensure API calls point to: `http://localhost:5000`
+**Set API base URL:**  
+Edit `frontend/src/api/axios.js` to point to your backend (local or deployed):
 
-### 5️⃣ Running the Application
+```js
+import axios from 'axios';
+
+const API = axios.create({
+  baseURL: 'http://localhost:5000/api', // or your deployed backend URL
+});
+
+export default API;
+```
+
+### 5️⃣ Running the Application Locally
 
 **Start Backend**
 
@@ -109,6 +121,26 @@ node server.js
 cd frontend
 npm start
 ```
+
+---
+
+## 🌐 Deploying the Application
+
+### Deploy Frontend (React) on Vercel
+
+1. Push your `frontend` folder to GitHub.
+2. Go to [vercel.com](https://vercel.com/) and import your repo.
+3. Set the **root directory** to `frontend`.
+4. Set environment variables if needed (e.g., `REACT_APP_API_URL`).
+5. Deploy!
+
+### Deploy Backend (Express) on Render/Railway/Other
+
+1. Push your `backend` folder to GitHub.
+2. Import it into your chosen backend host (Render, Railway, etc.).
+3. Set environment variables (`PORT`, `MONGO_URI`, `JWT_SECRET`).
+4. Deploy and note the backend URL.
+5. Update your frontend API base URL to point to the deployed backend.
 
 ---
 
@@ -134,10 +166,11 @@ FirstName, Phone, Notes
 ## 🔧 Features
 
 - Admin JWT Login
-- Add agents
+- Add, edit, and delete agents
 - Upload and validate CSV/XLSX files
 - Even distribution of entries among agents
 - Store and display data per agent
+- Responsive and dark theme UI
 
 ---
 
@@ -147,3 +180,17 @@ FirstName, Phone, Notes
 - Status tracking (pending/completed)
 - Email notifications
 - Analytics and dashboard metrics
+
+---
+
+## 🛠️ Troubleshooting
+
+- If you see "No agents found" on the dashboard, check:
+  - The backend is running and accessible
+  - The frontend API base URL is correct
+  - Agents exist in the database with `role: "agent"`
+  - The Authorization token is present in requests
+
+- For deployment, always set the correct API URLs and environment variables.
+
+---
