@@ -4,9 +4,9 @@ import './AgentList.css';
 
 const AgentList = () => {
   const [agents, setAgents] = useState([]);
-  const [form, setForm] = useState({ name: '', email: '', password: '' });
+  const [form, setForm] = useState({ name: '', email: '', password: '', mobile: '' });
   const [editingId, setEditingId] = useState(null);
-  const [editForm, setEditForm] = useState({ name: '', email: '', password: '' });
+  const [editForm, setEditForm] = useState({ name: '', email: '', password: '', mobile: '' });
   const [msg, setMsg] = useState('');
   const [loading, setLoading] = useState(false);
 
@@ -32,7 +32,7 @@ const AgentList = () => {
       await API.post('/agents', form, {
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
       });
-      setForm({ name: '', email: '', password: '' });
+      setForm({ name: '', email: '', password: '', mobile: '' });
       setMsg('Agent added!');
       fetchAgents();
     } catch (err) {
@@ -44,7 +44,7 @@ const AgentList = () => {
   // UPDATE
   const startEdit = (agent) => {
     setEditingId(agent._id);
-    setEditForm({ name: agent.name, email: agent.email, password: '' });
+    setEditForm({ name: agent.name, email: agent.email, password: '', mobile: agent.mobile || '' });
     setMsg('');
   };
   const handleEditChange = e => setEditForm({ ...editForm, [e.target.name]: e.target.value });
@@ -57,7 +57,7 @@ const AgentList = () => {
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
       });
       setEditingId(null);
-      setEditForm({ name: '', email: '', password: '' });
+      setEditForm({ name: '', email: '', password: '', mobile: '' });
       setMsg('Agent updated!');
       fetchAgents();
     } catch (err) {
@@ -111,6 +111,13 @@ const AgentList = () => {
           onChange={handleAddChange}
           required
         />
+        <input
+          name="mobile"
+          placeholder="Mobile"
+          value={form.mobile}
+          onChange={handleAddChange}
+          required
+        />
         <button type="submit" disabled={loading}>
           {loading ? 'Processing...' : 'Add Agent'}
         </button>
@@ -147,6 +154,13 @@ const AgentList = () => {
                       value={editForm.password}
                       onChange={handleEditChange}
                     />
+                    <input
+                      name="mobile"
+                      placeholder="Mobile"
+                      value={editForm.mobile}
+                      onChange={handleEditChange}
+                      required
+                    />
                     <button type="submit" disabled={loading}>Save</button>
                     <button type="button" onClick={() => setEditingId(null)}>Cancel</button>
                   </form>
@@ -154,6 +168,7 @@ const AgentList = () => {
                   <>
                     <span className="agent-name">{a.name}</span>
                     <span className="agent-email">{a.email}</span>
+                    <span className="agent-mobile">{a.mobile}</span>
                   </>
                 )}
               </div>

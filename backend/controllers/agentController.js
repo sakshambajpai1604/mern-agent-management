@@ -4,13 +4,13 @@ const bcrypt = require('bcryptjs');
 // Create agent
 exports.createAgent = async (req, res) => {
   try {
-    const { name, email, password } = req.body;
+    const { name, email, password, mobile } = req.body;
     let existing = await User.findOne({ email });
     if (existing) return res.status(400).json({ message: 'Agent already exists' });
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    const agent = new User({ name, email, password: hashedPassword, role: 'agent' });
+    const agent = new User({ name, email, password: hashedPassword, role: 'agent', mobile });
     await agent.save();
     res.status(201).json(agent);
   } catch (err) {

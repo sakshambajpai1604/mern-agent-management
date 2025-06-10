@@ -1,10 +1,13 @@
 .agent-list-container {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 1.5rem 1rem;
   background: #fff;
   border-radius: 16px;
   box-shadow: 0 2px 12px rgba(80, 72, 229, 0.06);
-  padding: 1.5rem 1.25rem;
-  margin-top: 1rem;
-  min-width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
 }
 
 .agent-list-title {
@@ -30,6 +33,7 @@
 
 .agent-list-item {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: 1rem;
   padding: 0.8rem 0.5rem;
@@ -62,6 +66,9 @@
 .agent-info {
   display: flex;
   flex-direction: column;
+  min-width: 120px;
+  flex: 1;
+  word-break: break-word;
 }
 
 .agent-name {
@@ -70,43 +77,79 @@
   font-size: 1.08rem;
 }
 
-.agent-email {
+.agent-email,
+.agent-mobile {
   color: #7b61ff;
   font-size: 0.98rem;
   margin-top: 2px;
+  word-break: break-all;
 }
 
 .agent-add-form,
 .agent-edit-form {
-  display: flex;
-  gap: 0.5rem;
-  margin-bottom: 1rem;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem 1.5rem;
+  margin-bottom: 1.5rem;
+  background: #f8f9fa;
+  padding: 1.2rem 1rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(123, 97, 255, 0.06);
+  align-items: end;
 }
+
 .agent-add-form input,
 .agent-edit-form input {
-  padding: 0.5rem;
-  border-radius: 6px;
-  border: 1px solid #e3e6f3;
+  padding: 0.7rem 1rem;
+  border-radius: 8px;
+  border: 1.5px solid #e3e6f3;
+  font-size: 1rem;
+  background: #fff;
+  transition: border 0.2s, box-shadow 0.2s;
+  box-shadow: 0 1px 4px rgba(123, 97, 255, 0.03);
+  min-width: 0;
+  width: 100%;
+  box-sizing: border-box;
 }
+
+.agent-add-form input:focus,
+.agent-edit-form input:focus {
+  border: 1.5px solid #7b61ff;
+  outline: none;
+  box-shadow: 0 2px 8px rgba(123, 97, 255, 0.08);
+}
+
 .agent-add-form button,
-.agent-edit-form button,
-.agent-actions button {
+.agent-edit-form button {
+  grid-column: span 2;
+  margin-top: 0.5rem;
+  padding: 0.8rem 1.2rem;
   background: linear-gradient(90deg, #7b61ff 60%, #5a8dee 100%);
   color: #fff;
   border: none;
-  border-radius: 6px;
-  padding: 0.5rem 1rem;
-  font-weight: 600;
+  border-radius: 8px;
+  font-size: 1.08rem;
+  font-weight: 700;
   cursor: pointer;
-  transition: background 0.2s;
-  margin-right: 0.3rem;
+  transition: background 0.2s, box-shadow 0.2s, transform 0.1s;
+  box-shadow: 0 2px 8px rgba(123, 97, 255, 0.10);
+  letter-spacing: 1px;
+  width: 100%;
+  min-width: 120px;
 }
+
 .agent-add-form button:hover,
-.agent-edit-form button:hover,
-.agent-actions button:hover {
+.agent-edit-form button:hover {
   background: linear-gradient(90deg, #5a8dee 60%, #7b61ff 100%);
+  box-shadow: 0 6px 18px rgba(123, 97, 255, 0.18);
+  transform: translateY(-2px) scale(1.03);
 }
+
+.agent-add-form input[name="mobile"],
+.agent-edit-form input[name="mobile"] {
+  grid-column: span 2;
+}
+
 .agent-list-msg {
   margin: 0.5rem 0 1rem 0;
   color: #2e7d32;
@@ -115,9 +158,63 @@
   border-radius: 6px;
   padding: 0.5rem 1rem;
 }
+
+.agent-edit-form button[type="button"] {
+  background: #eee;
+  color: #7b61ff;
+  border: 1px solid #e3e6f3;
+  margin-left: 0.5rem;
+  font-weight: 600;
+}
+
+.agent-edit-form button[type="button"]:hover {
+  background: #e3e6f3;
+  color: #5a8dee;
+}
+
 .agent-actions {
   display: flex;
   flex-direction: column;
   gap: 0.3rem;
   margin-left: 1rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 700px) {
+  .agent-list-container {
+    max-width: 100vw;
+    padding: 0.5rem 0.2rem;
+    overflow-x: auto;
+  }
+  .agent-list-title {
+    font-size: 1.1rem;
+    margin-bottom: 0.8rem;
+  }
+  .agent-add-form,
+  .agent-edit-form {
+    grid-template-columns: 1fr;
+    gap: 0.7rem;
+    padding: 0.7rem 0.2rem;
+  }
+  .agent-add-form input,
+  .agent-edit-form input,
+  .agent-add-form button,
+  .agent-edit-form button {
+    grid-column: span 1;
+  }
+  .agent-list-item {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.4rem;
+    padding: 0.5rem 0.1rem;
+  }
+  .agent-avatar {
+    margin-bottom: 0.3rem;
+  }
+  .agent-actions {
+    flex-direction: row;
+    gap: 0.4rem;
+    margin-left: 0;
+    margin-top: 0.3rem;
+  }
 }
