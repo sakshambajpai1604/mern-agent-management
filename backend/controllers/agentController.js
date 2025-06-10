@@ -5,7 +5,10 @@ const bcrypt = require('bcryptjs');
 exports.createAgent = async (req, res) => {
   try {
     const { name, email, password, mobile } = req.body;
-    let existing = await User.findOne({ email });
+    if (!name || !email || !password || !mobile) {
+      return res.status(400).json({ message: 'All fields are required' });
+    }
+    const existing = await User.findOne({ email });
     if (existing) return res.status(400).json({ message: 'Agent already exists' });
 
     const hashedPassword = await bcrypt.hash(password, 10);

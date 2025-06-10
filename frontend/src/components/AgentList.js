@@ -30,7 +30,10 @@ const AgentList = () => {
     setMsg('');
     try {
       await API.post('/agents', form, {
-        headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+          'Content-Type': 'application/json'
+        }
       });
       setForm({ name: '', email: '', password: '', mobile: '' });
       setMsg('Agent added!');
