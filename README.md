@@ -165,12 +165,12 @@ FirstName, Phone, Notes
 
 ## 🔧 Features
 
-- Admin JWT Login
-- Add, edit, and delete agents
+- Admin JWT Login and Register
+- Create, Read, Update and Delete agents
 - Upload and validate CSV/XLSX files
 - Even distribution of entries among agents
 - Store and display data per agent
-- Responsive and dark theme UI
+- Responsive UI
 
 ---
 
